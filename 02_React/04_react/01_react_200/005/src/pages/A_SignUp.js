@@ -7,33 +7,37 @@
 // TODO: (바닐라 js) 1) 변수의 값을 가져와서 : querySelector()
 // TODO:            2) 변수의 값 수정해서 :
 // TODO:            3) innerHTML 화면에 넣기
-import React, { useState } from "react";
+import React,{useState} from "react";
 
 function A_SignUp() {
-  // TODO: 변수 정의
-  let [name, setName] = useState(""); // 이름 입력상자(input)와 바인딩
-  let [gender, setGender] = useState("남자"); // 성별 (select)과 바인딩
 
-  // TODO: 함수 정의
-  // nfn
-  // 버튼 클릭 함수 : alert() 이름, 성별을 출력하기
-  const handleSubmit = (event) => {
-    // submit 버튼 : 기본기능(페이지 이동) : 취소
-    event.preventDefault(); // 기본기능 취소(방해) 함수
-    alert("이름 : " + name + " 성별 : " + gender);
-  };
+    // TODO: 변수 정의
+    let [name, setName] = useState(""); // 이름 입력상자(input)와 바인딩(연결)
+    let [gender, setGender] = useState("남자"); // 성별 (select) 와 바인딩(연결)
 
-  // TODO: 역방향 바인딩 (수동 코딩)
-  // TODO: 화면 값 변경(event.target.value) -> 변수 값 변경
-  const handleChangeName = (event) => {
-    // 수정함수 : setter 함수
-    setName(event.target.value); // 역방향 바인딩 코딩(input)
-  };
+    // TODO: 함수 정의
+    // nfn
+    // 버튼 클릭 함수 : alert() 이름, 성별을 출력하기
+    const handleSubmit = (event) => { 
+        // submit 버튼 : 기본특징(페이지 이동) : 취소
+        event.preventDefault(); // 기본 기능 취소(방해) 함수
+        alert("이름 : " + name + " 성별 : " + gender);
+     }
 
-  const handleChangeGender = (event) => {
-    setGender(event.target.value); // 역방향 바인딩 코딩(select)
-  };
+    //  TODO: 역방향 바인딩 (수동 코딩)
+    // TODO: 화면 값 변경(event.target.value) -> 변수 값 변경
+    // nfn
+    const handleChangeName = (event) => { 
+        // 수정함수 : setter 함수
+        setName(event.target.value); // 역방향 바인딩 코딩(input)
+     }
+    //  nfn
+    const handleChangeGender = (event) => { 
+        setGender(event.target.value); // 역방향 바인딩(select)
+     }
+
   return (
+    // TODO : 여기 넣어 주세요
     <div className="container">
       <form>
         <label>
@@ -52,7 +56,8 @@ function A_SignUp() {
         <label>
           성별:
           {/* value : 먼저 선택된값 */}
-          <select value={gender} name="gender" onChange={handleChangeGender}>
+          <select value={gender} name="gender" 
+                onChange={handleChangeGender}>
             <option value="남자">남자</option>
             <option value="여자">여자</option>
           </select>
