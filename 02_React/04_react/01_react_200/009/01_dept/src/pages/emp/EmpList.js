@@ -38,7 +38,20 @@ function EmpList() {
   }, []);
 
   //   검색 함수 : findByCname()
-  const findByCname = () => {};
+  // axios : get(url) : 공통함수 : EmpService.findByCname(검색어)
+  const findByCname = () => {
+    EmpService.findByCname(searchCname) // 검색어로 조회 요청
+      .then((response) => {
+        // 성공하면 자동 실행
+        setCustomer(response.data); // 백엔드에서 전달해준 데이터(response.data)를 저장
+        // 로그 찍기
+        console.log(response.data); // 백엔드데이터(response.data)
+      })
+      .catch((e) => {
+        // 실패하면 자동 실행
+        console.log(e); // 에러메세지 출력
+      });
+  };
 
   //   역바인딩 함수
   const onChangeSearchCname = (event) => {
@@ -51,7 +64,7 @@ function EmpList() {
       <div className="row">
         {/* 제목 시작 */}
         <div className="col-md-12 mb-5 mt-5">
-          <h1>Customer List No Page</h1>
+          <h1>Customer List</h1>
         </div>
         {/* 제목 끝 */}
       </div>
@@ -100,7 +113,7 @@ function EmpList() {
                   <td>{data.email}</td>
                   <td>{data.phone}</td>
                   <td>
-                    <Link to={"/customer/" + data.id}>
+                    <Link to={"/emp/" + data.id}>
                       <span className="badge bg-success">Edit</span>
                     </Link>
                   </td>

@@ -38,7 +38,19 @@ function DeptList() {
 
   // 검색어 조회 함수 : findByDname()
   // nfn
+  // axios : get(url) : 공통함수 : DeptService.findByDname(검색어)
   const findByDname = () => {
+    DeptService.findByDname(searchDname) // 검색어로 조회 요청
+      .then((response) => {
+        // 성공하면 자동 실행
+        setDept(response.data); // 백엔드에서 전달해준 데이터(response.data)를 저장
+        // 로그 찍기
+        console.log(response.data); // 백엔드데이터(response.data)
+      })
+      .catch((e) => {
+        // 실패하면 자동 실행
+        console.log(e); // 에러메세지 출력
+      });
   };
 
   // 검색어 입력양식 : onChange={함수명}
@@ -109,6 +121,10 @@ function DeptList() {
                   <td>{data.dname}</td>
                   <td>{data.loc}</td>
                   <td>
+                    {/* 사용법1) : /url?변수명=변수값(쿼리스트링 방식) */}
+                    {/* 사용법2) : /url/변수값(파라메터 방식) 
+                              -> 다른페이지에서 값을 받을수 있음 */}
+                    {/* 클릭하면 상세페이지(컴포넌트)가 화면에 뜸(부서번호도 넘겨줌) */}
                     <Link to={"/dept/" + data.id}>
                       <span className="badge bg-success">Edit</span>
                     </Link>
