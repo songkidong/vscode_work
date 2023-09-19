@@ -5,6 +5,13 @@ import chap02.Sec0203;
 import chap02.Sec0204;
 import chap03.Sec0301;
 import chap03.Verify03;
+import chap04.Sec0401;
+import chap04.Sec0402;
+import chap04.Verify04;
+import chap05.Sec0501;
+import chap05.Sec0502;
+import chap05.Sec0503;
+import chap05.Verify05;
 
 /**
  * packageName : PACKAGE_NAME
@@ -26,10 +33,17 @@ public class JavaApplication {
 //      객체지향 코딩 : 아래처럼 코딩하는 것
 //        주석 단축키 : ctrl + /
 //        줄복사 : ctrl + d
+
+        /**
+         * 섹션 1장
+         */
 //        Sec0101 sec0101 = new Sec0101();
 //        sec0101.exam01(); // Hello World
 //        sec0101.exam02(); // Hello World
 
+        /**
+         * 섹션 2장
+         */
 //        객체지향 코딩 : 객체 생성해서 함수/변수 호출하는 코딩
 //        Sec0201 sec0201 = new Sec0201();
 //        sec0201.exam01(); // 30
@@ -71,6 +85,9 @@ public class JavaApplication {
 //        Sec0204 sec0204 = new Sec0204();
 //        sec0204.exam01();
 
+        /**
+         * 섹션 3장
+         */
 //        Sec0301 sec0301 = new Sec0301();
 //        sec0301.exam01(); // -100
                             // 100
@@ -86,10 +103,53 @@ public class JavaApplication {
 //        sec0301.exam07();
 //        sec0301.exam08();
 
-        Verify03 verify03 = new Verify03();
-        verify03.exam01();
-        verify03.exam02();
-        verify03.exam03();
+        /**
+         * 연습문제
+         */
+//        Verify03 verify03 = new Verify03();
+//        verify03.exam01();
+//        verify03.exam02();
+//        verify03.exam03();
+
+        /**
+         * 섹션 4장
+         */
+//        Sec0401 sec0401 = new Sec0401();
+//        sec0401.exam01();
+//        sec0401.exam02();
+//        sec0401.exam03();
+
+//        Sec0402 sec0402 = new Sec0402();
+//        sec0402.exam01();
+//        sec0402.exam02();
+//        sec0402.exam03();
+//        sec0402.exam04();
+//        sec0402.exam05();
+
+//        Verify04 verify04 = new Verify04();
+//        verify04.exam01();
+//        verify04.exam02();
+//        verify04.exam03();
+//        verify04.exam04();
+
+        /**
+         * 섹션 5장
+         */
+//        Sec0501 sec0501 = new Sec0501();
+//        sec0501.stringEqualsExam();
+
+//        Sec0502 sec0502 = new Sec0502();
+//        sec0502.getStudent();
+//        sec0502.arrayFunc();
+//        sec0502.arrayTwo();
+//        sec0502.AdvancedExam();
+
+//        Sec0503 sec0503 = new Sec0503();
+//        sec0503.EnumWeek();
+
+        Verify05 verify05 = new Verify05();
+//        verify05.exam01();
+        verify05.exam02();
     }
 
 }
