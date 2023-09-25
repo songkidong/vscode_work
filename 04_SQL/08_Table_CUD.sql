@@ -129,7 +129,7 @@ COMMIT;
 -- 예제 7) 임시적으로 NULL 값을 입력해서 INSERT 하기
 -- 1) 암묵적으로(눈에 안보이지만) NULL 값 INSERT 하기
 INSERT INTO DEPT_COPY(DNO, DNAME)
-VALUES(30, 'SALES'); -- 데티어 추가
+VALUES(30, 'SALES'); -- 데이터 추가
 
 SELECT * FROM DEPT_COPY; -- 데이터 확인
 
