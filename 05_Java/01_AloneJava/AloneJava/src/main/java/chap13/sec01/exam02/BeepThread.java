@@ -15,12 +15,12 @@ import java.awt.*;
  * —————————————————————————————
  * 2023-10-02         GGG          최초 생성
  */
-public class BeepThread extends Thread {
-//    TODO: 쓰레드 작업을 실행시키는 함수
+public class BeepThread extends Thread{
+//  TODO: 쓰레드 작업을 실행시키는 함수
     @Override
     public void run() {
 //      TODO: beep 를 들려주는 코드
-//        자바쪽 멀티미디어 객체 : 소리, 그림, 이미지 등등 다루는 객체
+//         자바쪽 멀티미디어 객체 : 소리, 그림, 이미지 등등 다루는 객체
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         for (int i = 0; i < 5; i++) {
             toolkit.beep(); // 삐소리
