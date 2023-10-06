@@ -60,4 +60,11 @@ public class MultiPathVariableController {
 
         return "exam06/example01.jsp";
     }
+
+//  TODO: 예제 2
+    @GetMapping("/etc")
+    public String getEtc(Model model) {
+        return "exam06/etc.jsp";
+    }
+
 }
