@@ -1,4 +1,4 @@
-package com.example.modelexam.service.exam01;
+package com.example.modelexam.service.exam02;
 
 import com.example.modelexam.dao.DeptDao;
 import com.example.modelexam.model.Dept;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * packageName : com.example.modelexam.service.exam01
+ * packageName : com.example.modelexam.service.exam02
  * fileName : DeptService
  * author : GGG
  * date : 2023-10-06
@@ -30,7 +30,7 @@ import java.util.List;
  * 2023-10-06         GGG          최초 생성
  */
 @Service
-public class DeptService {
+public class Dept02Service {
 
     @Autowired
     DeptDao deptDao; // 가짜 DB에 접근하는 객체

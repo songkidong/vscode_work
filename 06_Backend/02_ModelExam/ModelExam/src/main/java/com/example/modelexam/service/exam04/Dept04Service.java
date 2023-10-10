@@ -1,4 +1,4 @@
-package com.example.modelexam.service.exam01;
+package com.example.modelexam.service.exam04;
 
 import com.example.modelexam.dao.DeptDao;
 import com.example.modelexam.model.Dept;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * packageName : com.example.modelexam.service.exam01
+ * packageName : com.example.modelexam.service.exam04
  * fileName : DeptService
  * author : GGG
  * date : 2023-10-06
@@ -30,7 +30,7 @@ import java.util.List;
  * 2023-10-06         GGG          최초 생성
  */
 @Service
-public class DeptService {
+public class Dept04Service {
 
     @Autowired
     DeptDao deptDao; // 가짜 DB에 접근하는 객체
@@ -57,5 +57,29 @@ public class DeptService {
         Dept dept = deptDao.selectById(dno);
 
         return dept;
+    }
+
+    /**
+     * 부서 정보 저장 함수
+     * @param dept
+     * @return
+     */
+    public List<Dept> save(Dept dept) {
+        
+        List<Dept> list = null;
+//      TODO: insert 시 dno 자동 생성
+//        기존 부서번호 max 찾아서 + 10
+        if(dept.getDno() == null) {
+//          TODO: 전체조회해서 현재 배열의 크기 가져오기
+            int count = deptDao.selectAll().size();
+//          TODO: 새로운 부서번호 생성
+            int newDno = (count + 1) * 10;
+//          TODO: 새로운 부서번호 저장 : dept
+            dept.setDno(newDno);
+//          TODO: db 저장
+            list = deptDao.insert(dept);
+        }
+
+        return list;
     }
 }
