@@ -6,13 +6,14 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * packageName : com.example.mybatisexam.dao
  * fileName : EmpDao
  * author : GGG
  * date : 2023-10-12
- * description :
+ * description : 사원 Dao (Mybatis mapper : @Mapper 사용)
  * 요약 :
  * <p>
  * ===========================================================
@@ -22,7 +23,7 @@ import java.util.List;
  */
 @Mapper
 public interface EmpDao {
-    /** 전체 조회 : 부서명 like 기능 있음 */
+    /** 전체 조회 : 사원명 like 기능 있음 */
     public List<Emp> findByEnameContaining(
             @Param("ename") String ename,
             PageReq pageReq
@@ -30,4 +31,19 @@ public interface EmpDao {
 
     /** 전체 테이블 개수 세기 함수 */
     long countByEname(String ename);
+
+    /** 상세조회(1건조회) */
+    Optional<Emp> findById(int eno);
+
+    /** 저장 함수 */
+    int insert(Emp emp);
+
+    /** 수정함수 */
+    int update(Emp emp);
+
+    /** 삭제함수 */
+    int deleteById(int eno);
+
+    /** 기본키(eno) 가 있는지 확인하는 조회함수 */
+    long existById(int eno);
 }

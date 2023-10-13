@@ -47,7 +47,7 @@
         <tbody>
         <c:forEach var="data" items="${dept}">
             <tr>
-                <td>${data.dno}</td>
+                <td><a href="/exam01/dept/edition/${data.dno}">${data.dno}</a></td>
                 <td>${data.dname}</td>
                 <td>${data.loc}</td>
                 <td>${data.insertTime}</td>
@@ -84,6 +84,12 @@
         </ul>
     </div>
     <%-- TODO: 페이지 번호 끝 --%>
+
+    <%-- TODO: Add 버튼 추가 --%>
+    <div class="text-center">
+        <a href="/exam01/dept/addition" class="btn btn-primary center">Add</a>
+    </div>
+
 </div>
 
 <script>

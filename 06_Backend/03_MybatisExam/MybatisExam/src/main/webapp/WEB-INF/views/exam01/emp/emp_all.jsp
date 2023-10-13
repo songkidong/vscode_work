@@ -52,7 +52,7 @@
         <tbody>
         <c:forEach var="data" items="${emp}">
             <tr>
-                <td>${data.eno}</td>
+                <td><a href="/exam01/emp/edition/${data.eno}">${data.eno}</a></td>
                 <td>${data.ename}</td>
                 <td>${data.job}</td>
                 <td>${data.manager}</td>
@@ -76,7 +76,7 @@
             <%--  startPage : 1부터 시작 --%>
             <%--  currentPage : 0부터 시작 --%>
             <li class="page-item ${(startPage==1)? 'disabled': ''}">
-                <a class="page-link" href="/exam01/dept?page=${startPage-2}&size=${3}">Previous</a>
+                <a class="page-link" href="/exam01/emp?page=${startPage-2}&size=${3}">Previous</a>
             </li>
             <%-- TODO: 실제 페이지 번호들 --%>
             <%--  사용법 : <c:forEach var="data" begin="시작값" end="끝값">반복문</c:forEach> --%>
@@ -94,6 +94,11 @@
         </ul>
     </div>
     <%-- TODO: 페이지 번호 끝 --%>
+
+    <%-- TODO: Add 버튼 추가 --%>
+    <div class="text-center">
+        <a href="/exam01/emp/addition" class="btn btn-primary center">Add</a>
+    </div>
 </div>
 
 <script>
