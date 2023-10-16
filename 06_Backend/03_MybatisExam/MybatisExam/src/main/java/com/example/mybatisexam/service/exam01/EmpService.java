@@ -91,5 +91,26 @@ public class EmpService {
         return false;
     }
 
+    /** TODO: dynamic sql 조회 */
+    public PageRes<Emp> findByDynamicContaining(
+            String ename,
+            String job,
+            Integer manager,
+            PageReq pageReq
+    ) {
+        //      TODO: dynamic 조회(like 됨)
+        List<Emp> list = empDao.findByDynamicContaining(ename, job, manager, pageReq);
 
+//      TODO: 페이징 처리 로직
+//        1) 총 테이블 개수 :
+        long totalCount = empDao.countByDynamic(ename, job, manager);
+//      TODO: 생성자 페이지 결과 객체(PageRes) => jsp 로 페이징 정보를 주기위해 코딩함
+        PageRes pageRes = new PageRes<>(
+                list,               // 검색 결과(부서) 배열
+                pageReq.getPage(),  // 현재 페이지 번호
+                totalCount,         // 총 테이블 건수
+                pageReq.getSize()   // 1페이지당 개수
+        );
+        return pageRes;
+    }
 }

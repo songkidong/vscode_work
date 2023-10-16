@@ -32,23 +32,22 @@ public class DeptService {
     DeptDao deptDao; // db crud 함수들이 있는 클래스
 
     /** dname like 검색 */
-    public PageRes<Dept> findByDnameContaining(
-            String dname,
-            PageReq pageReq
-    ) {
-//      TODO: 전체 조회(like 됨)
+    public PageRes<Dept> findByDnameContaining(String dname,
+                                               PageReq pageReq) {
+//        todo: 전체 조회 (like 됨)
         List<Dept> list = deptDao.findByDnameContaining(dname, pageReq);
 
-//      TODO: 페이징 처리 로직
-//        1) 총 테이블 개수 :
+//        todo: 페이징 처리 로직
+//         1) 총 테이블 개수 :
         long totalCount = deptDao.countByDname(dname);
-//      TODO: 생성자 페이지 결과 객체(PageRes)
+//        todo: 생성자 페이지 결과 객체(PageRes)
         PageRes pageRes = new PageRes(
-                list,               // 검색 결과(부서) 배열
-                pageReq.getPage(),  // 현재 페이지 번호
-                totalCount,         // 총 테이블 건수
-                pageReq.getSize()   // 1페이지당 개수
+                list,              // 검색 결과(부서) 배열
+                pageReq.getPage(), // 현재 페이지 번호
+                totalCount,        // 총 테이블 건수
+                pageReq.getSize()  // 1페이지당 개수
         );
+
         return pageRes;
     }
 
@@ -60,16 +59,17 @@ public class DeptService {
         return optionalDept;
     }
 
+
     /** 저장함수 : dml ( 트랜잭션을 동반: 테이블에 값을 수정/삭제/넣는 행위 ) */
     public int save(Dept dept) {
         int queryResult = -1; // 저장된 건수를 위한 변수
 
         try {
-//          TODO: 기본키(dno) 없으면 insert
+//          todo: 기본키(dno) 없으면 insert
             if(dept.getDno() == null) {
                 queryResult = deptDao.insert(dept);
             } else {
-//          TODO: 기본키(dno) 있으면 update
+//          todo: 기본키(dno) 있으면 update
                 queryResult = deptDao.update(dept);
             }
         } catch (Exception e) {
@@ -78,10 +78,10 @@ public class DeptService {
         return queryResult;
     }
 
-    /** 삭제함수 */
+    /** 삭제함수 dml 함수 : 에러처리 */
     public boolean removeById(int dno) {
         try {
-            if (deptDao.existById(dno) > 0) {
+            if(deptDao.existById(dno) > 0) {
                 deptDao.deleteById(dno);
                 return true;
             }
@@ -91,5 +91,33 @@ public class DeptService {
         return false;
     }
 
+    /** todo: dynamic sql */
+    public PageRes<Dept> findByDynamicContaining(
+            String dname, String loc, PageReq pageReq
+    ) {
+        //        todo: dynamic 조회 (like 됨)
+        List<Dept> list = deptDao.findByDynamicContaining(dname, loc, pageReq);
 
+//        todo: 페이징 처리 로직
+//         1) 총 테이블 개수 :
+        long totalCount = deptDao.countByDynamic(dname, loc);
+//        todo: 생성자 페이지 결과 객체(PageRes)
+        PageRes pageRes = new PageRes(
+                list,              // 검색 결과(부서) 배열
+                pageReq.getPage(), // 현재 페이지 번호
+                totalCount,        // 총 테이블 건수
+                pageReq.getSize()  // 1페이지당 개수
+        );
+
+        return pageRes;
+    }
 }
+
+
+
+
+
+
+
+
+

@@ -2,7 +2,6 @@ package com.example.mybatisexam.controller.exam01;
 
 import com.example.mybatisexam.model.common.PageReq;
 import com.example.mybatisexam.model.common.PageRes;
-import com.example.mybatisexam.model.vo.Dept;
 import com.example.mybatisexam.model.vo.Emp;
 import com.example.mybatisexam.service.exam01.EmpService;
 import lombok.extern.slf4j.Slf4j;
