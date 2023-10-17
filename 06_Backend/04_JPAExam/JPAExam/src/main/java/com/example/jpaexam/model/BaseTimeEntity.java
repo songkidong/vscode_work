@@ -30,6 +30,7 @@ import java.time.format.DateTimeFormatter;
 public abstract class BaseTimeEntity {
 //  TODO: 공통 속성 : yyyy-mm-dd HH:mm:ss 아니고 기본 패턴으로 보임
     private String insertTime;
+
     private String updateTime;
 
 //  TODO: 해당 테이블에 데이터가 만들어 질때(insert 문) 실행되는 이벤트 함수

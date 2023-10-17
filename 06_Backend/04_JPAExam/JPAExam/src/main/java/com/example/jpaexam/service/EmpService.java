@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * packageName : com.example.jpaexam.service
  * fileName : EmpService
  * author : GGG
  * date : 2023-10-16
- * description : 사원 서비스
+ * description : 사원 업무 서비스
  * 요약 :
  * <p>
  * ===========================================================
@@ -30,5 +31,30 @@ public class EmpService {
     public List<Emp> findAll() {
         List<Emp> list = empRepository.findAll(); // db 전체조회 함수호출
         return list;
+    }
+    
+    /** 상세조회(1건조회) */
+    public Optional<Emp> findById(int eno) {
+        Optional<Emp> optionalEmp = empRepository.findById(eno);
+        
+        return optionalEmp;
+    }
+    
+    /** 저장(수정)함수 */
+    public Emp save(Emp emp) {
+//      TODO: jpa 저장함수 호출(기본키 없으면 insert, 있으면 update)
+        Emp emp2 = empRepository.save(emp);
+        
+        return emp2; // 저장된 사원객체
+    }
+
+    /** 삭제 함수 */
+    public boolean removeById(int eno) {
+//      existById : jpa 함수 - 리턴값: 있으면 true, 없으면 false
+        if (empRepository.existsById(eno)) {
+            empRepository.deleteById(eno); // DB 삭제(eno)
+            return true;
+        }
+        return false;
     }
 }
