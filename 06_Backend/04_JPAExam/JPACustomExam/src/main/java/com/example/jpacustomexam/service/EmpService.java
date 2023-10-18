@@ -1,8 +1,11 @@
 package com.example.jpacustomexam.service;
 
+import com.example.jpacustomexam.dto.EmpGroupDto;
 import com.example.jpacustomexam.model.Emp;
 import com.example.jpacustomexam.repository.EmpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -132,4 +135,77 @@ public class EmpService {
         return list;
     }
 
+    /** 전체 조회 + salary 내림차순, ename 오름차순으로 정렬 : @Query */
+    public List<Emp> selectDesc() {
+        List<Emp> list = empRepository.selectDesc();
+
+        return list;
+    }
+
+    /** 연습 3) : @Query */
+    public List<Emp> selectSalary(int salary) {
+        List<Emp> list = empRepository.selectSalary(salary);
+
+        return list;
+    }
+
+    /** 연습 4) : @Query */
+    public List<Emp> selectHiredate(String first, String last) {
+        List<Emp> list = empRepository.selectHiredate(first, last);
+
+        return list;
+    }
+
+    /** 연습 5) : @Query(dto) */
+    public List<EmpGroupDto> selectGroupDnoJob() {
+        List<EmpGroupDto> list = empRepository.selectGroupDnoJob();
+
+        return list;
+    }
+
+    /** 연습 6) : @Query(dto) */
+    public List<EmpGroupDto> selectGroupDnoTrunc() {
+        List<EmpGroupDto> list = empRepository.selectGroupDnoTrunc();
+
+        return list;
+    }
+
+    /** 연습 7) : @Query(dto) */
+    public List<EmpGroupDto> selectGroupSumMax() {
+        List<EmpGroupDto> list = empRepository.selectGroupSumMax();
+
+        return list;
+    }
+
+    /** 연습 8) : @Query(dto) */
+    public List<EmpGroupDto> selectGroupHiredate() {
+        List<EmpGroupDto> list = empRepository.selectGroupHiredate();
+
+        return list;
+    }
+//  -------------------------------------------------------------------
+//  페이징 연습
+//  -------------------------------------------------------------------
+//  1) ename like 검색
+    public Page<Emp> findAllByEnameContaining(String ename, Pageable pageable) {
+        Page<Emp> page = empRepository.findAllByEnameContaining(ename, pageable);
+
+        return page;
+    }
+
+//  2) 전체 조회 : 페이징
+    public Page<Emp> findAllPage(Pageable pageable) {
+        Page<Emp> page = empRepository.findAll(pageable);
+
+        return page;
+    }
+//  -------------------------------------------------------------------
+//  @Query 연습
+//  -------------------------------------------------------------------
+//  2) : 페이징
+    public Page<Emp> selectEnamePage(String ename, Pageable pageable) {
+        Page<Emp> page = empRepository.selectEnamePage(ename, pageable);
+
+        return page;
+    }
 }
